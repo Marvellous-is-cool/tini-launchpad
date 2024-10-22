@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Skills</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+      }
+      .header div {
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .info {
+        font-size: 14px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.445);
+      }
+      .left {
+        color: lightblue;
+      }
+      .middle {
+        color: orange;
+      }
+      .right {
+        color: white;
+      }
+      .tech-skill-list {
+        margin-top: 40px;
+      }
+      .tech-skill-item {
+        background-color: #222;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .tech-skill-item:hover {
+        background-color: #333;
+      }
+      .skill-name {
+        font-size: 18px;
+        color: lightblue;
+      }
+      .discord-link {
+        font-size: 14px;
+        color: orange;
+        margin-top: 10px;
+        display: none;
+        transition: opacity 0.5s ease;
+      }
+      .show .discord-link {
+        display: block;
+        opacity: 1;
+      }
+      .tech-skill-item:hover .discord-link {
+        display: block;
+        opacity: 1;
+      }
+      .collapse-icon {
+        float: right;
+        font-size: 12px;
+        color: orange;
+        transition: transform 0.3s ease;
+      }
+      .collapsed .collapse-icon {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="left">
+        Tini Technologies
+        <br />
+        <span class="middle">Launchpad</span>
+      </div>
+      <div class="right">Discord Servers</div>
+    </div>
+
+    <div id="tech-skills" class="tech-skill-list"></div>
+
+    <p>
+      <i class="info"
+        >In case you can't find your skill, but you have signed up, kindly reach
+        out!</i
+      >
+    </p>
+
+    <script>
+      const baseLink = "https://discord.com/invite/";
+
+      // Define skills with their respective Discord links (up to 5 links per skill)
+      const techSkills = [
+        {
+          skill: "Martech",
+          links: {
+            link_1: "XbK5QYUdMq",
+            link_2: "gyrNHAwHK8",
+            link_3: "kpavwKBSd8",
+            link_4: "MBcjQBJNe9",
+            link_5: "xVH9VPGfkX",
+            link_6: "FWFWMzrBNu",
+          },
+        },
+        {
+          skill: "Web Development",
+          links: {
+            link_1: "AH83gjy",
+            link_2: "gRJSm7qyff",
+            link_3: "GCqrzEycAD",
+            link_4: "hX5BR6H9XA",
+            link_5: "JXVeqqspjY",
+            link_6: "EjpmDBJ2zg",
+          },
+        },
+        {
+          skill: "Virtual Assistants",
+          links: {
+            link_1: "rymm4RenJK",
+            link_2: "barangay-va-community-958620691412946964",
+            link_3: "S5jNbeDq2z",
+            link_4: "GeYfJQzY5r",
+            link_5: "W86fgEkyqA",
+            link_6: "M5YHERNHFD",
+          },
+        },
+        {
+          skill: "Animation",
+          links: {
+            link_1: "Z4zpKkgSzq",
+            link_2: "ghrcty4had",
+            link_3: "2zsVF7Yu3U",
+            link_4: "nP4MJpghdm",
+            link_5: "n5BJapfPc8",
+            link_6: "Zer3KGh6M3",
+            link_7: "qma9UubXqj",
+          },
+        },
+        {
+          skill: "Full Stack Development",
+          links: {
+            link_1: "VmXbXqbQGm",
+            link_2: "4sVZxvqDxu",
+            link_3: "kPbSdNZEer",
+            link_4: "devcord",
+            link_5: "code",
+            link_6: "codesupport-240880736851329024",
+            link_7: "y5ksVAS",
+          },
+        },
+        {
+          skill: "Fintech / BlockChain / DeFi",
+          links: {
+            link_1: "ng6EwEhtvG",
+            link_2: "965j3hNEEs",
+            link_3: "RM8RjCvpTg",
+            link_4:
+              "79X3j8NHGE?ref=thehiveindex.com&utm_source=thehiveindex.com",
+            link_5: "Ez5YXFav9k",
+          },
+        },
+        {
+          skill: "Software Development",
+          links: {
+            link_1: "m4e6BbB9ZA",
+            link_2: "code",
+            link_3: "dAF4F28",
+            link_4: "64MVzQX",
+            link_5: "VjhZh7tBH7",
+            link_6: "JmVAT53dYm",
+            link_7: "python",
+            link_8:
+              "539Qcvs2aE?ref=thehiveindex.com&utm_source=thehiveindex.com",
+          },
+        },
+        {
+          skill: "UI/UX Design",
+          links: {
+            link_1: "designbuddies",
+            link_2: "VRPn3xM",
+            link_3: "fRxaBsF",
+            link_4: "design-squad-ux-community-808005473290289172",
+            link_5: "fsyFeH7",
+            link_6: "Pryrs39vPa",
+            link_7: "eyxuzExSf9",
+            link_8: "yEtXavWKS5",
+            link_9: "HZUUfmk",
+            link_10: "TaApzPx",
+          },
+        },
+        {
+          skill: "Cyber Security",
+          links: {
+            link_1: "bhis",
+            link_2: "EGnDD9A",
+            link_3: "cyber-jobs-hunting-777881374555897886",
+            link_4: "hackthebox",
+            link_5: "hack-this-site-193774599719223297",
+            link_6: "infosecprep",
+            link_7: "mQQ5NsTbfF",
+            link_8: "ysndAm8",
+            link_9: "owlsec",
+            link_10: "threathunter",
+            link_11: "tryhackme",
+            link_12: "tryhardsecurity",
+            link_13: "8xHn6Fr",
+            link_14: "F2HKJmQ",
+            link_14: "gU23upfzjs",
+          },
+        },
+        {
+          skill: "EXTRA: General (Job Hunting & More)",
+          links: {
+            link_1: "GeYfJQzY5r",
+            link_2: "wHfTHZSSEP",
+            link_3: "xNhkGXA3XR",
+            link_4: "s3sNHGZ",
+            link_5: "xVH9VPGfkX",
+            link_6: "FWFWMzrBNu",
+            link_7: "ftQA9bWxKN",
+            link_8:
+              "tech-startup-community-835491484286713866?fingerprint=1298053812405276674.7oALPIHkAsoleTaM42DP7PKU0fQ&attemptId=cf60fa2b-de2b-4d3b-aa39-a94a516166b2",
+          },
+        },
+        {
+          skill: "EXTRA: For Coders / Programmers (Highly Recommended)",
+          links: {
+            link_1: "kXgwA2C2yB",
+            link_2: "rnEqca4KhT",
+            link_3: "DB3sqa6yzZ",
+            link_4: "XG3ta9SAzj",
+            link_5: "yerSpeM8A4",
+          },
+        },
+      ];
+
+      const skillListDiv = document.getElementById("tech-skills");
+
+      // Dynamically generate skill items with Discord server links
+      techSkills.forEach(({ skill, links }) => {
+        const skillItemDiv = document.createElement("div");
+        skillItemDiv.className = "tech-skill-item";
+
+        const skillNameSpan = document.createElement("span");
+        skillNameSpan.className = "skill-name";
+        skillNameSpan.textContent = skill;
+
+        const collapseIcon = document.createElement("span");
+        collapseIcon.className = "collapse-icon";
+        collapseIcon.textContent = "▼";
+
+        skillItemDiv.appendChild(skillNameSpan);
+        skillItemDiv.appendChild(collapseIcon);
+
+        // Add the Discord links for each skill
+        Object.keys(links).forEach((key, index) => {
+          const discordLinkDiv = document.createElement("a");
+          discordLinkDiv.className = "discord-link";
+          discordLinkDiv.textContent = `Discord Server ${index + 1}`;
+          discordLinkDiv.href = baseLink + links[key];
+          discordLinkDiv.target = "_blank";
+          skillItemDiv.appendChild(discordLinkDiv);
+        });
+
+        // Add click event to toggle visibility of links
+        skillItemDiv.addEventListener("click", () => {
+          skillItemDiv.classList.toggle("show");
+          collapseIcon.classList.toggle("collapsed");
+        });
+
+        skillListDiv.appendChild(skillItemDiv);
+      });
+    </script>
+  </body>
+</html>
