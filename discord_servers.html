@@ -30,6 +30,7 @@
       }
       .left {
         color: lightblue;
+        cursor: pointer;
       }
       .middle {
         color: orange;
@@ -283,6 +284,13 @@
         });
 
         skillListDiv.appendChild(skillItemDiv);
+      });
+
+      // when the title is clicked
+      document.querySelector(".left").addEventListener("click", () => {
+        const createAnchor = document.createElement("a");
+        createAnchor.href = "/";
+        createAnchor.click();
       });
     </script>
   </body>

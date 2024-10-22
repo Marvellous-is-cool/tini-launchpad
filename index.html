@@ -35,9 +35,9 @@
 
       .header h3 {
         font-size: 24px;
-        color: #0066cc;
+        color: lightblue;
         margin: 0;
-        letter-spacing: 0.2em;
+        cursor: pointer;
       }
 
       .header span {
@@ -46,9 +46,25 @@
         letter-spacing: 0;
       }
 
-      .header h5 {
+      .header .flex-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        flex: 1;
+      }
+
+      .header .flex-row .link {
         font-size: 18px;
         color: #ff6600;
+        font-family: "Courier New", Courier, monospace;
+        cursor: pointer;
+      }
+
+      .header .flex-row h5 {
+        font-size: 18px;
+        color: #ff66008a;
+        font-family: "Courier New", Courier, monospace;
       }
 
       .description {
@@ -60,7 +76,7 @@
 
       .register-button {
         display: block;
-        background-color: #0066cc;
+        background-color: #ff6600;
         color: white;
         text-align: center;
         padding: 15px;
@@ -83,7 +99,7 @@
 
       .form-group {
         margin-bottom: 15px;
-        color: #1076cc;
+        color: lightblue;
       }
 
       .form-group label {
@@ -97,7 +113,7 @@
       .form-group textarea {
         width: 100%;
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid lightblue;
         border-radius: 5px;
         font-size: 16px;
       }
@@ -143,7 +159,7 @@
       }
 
       .feedback-box.submitting {
-        background-color: #0066cc;
+        background-color: lightblue;
         color: #fff;
       }
 
@@ -173,7 +189,10 @@
         Tini Technologies <br />
         <span> Launchpad </span>
       </h3>
-      <h5>Registration</h5>
+      <div class="flex-row">
+        <h5 class="link">Discord Servers</h5>
+        <h5>Registration</h5>
+      </div>
     </div>
 
     <div class="container">
@@ -438,6 +457,20 @@
               console.error("Error!", error.message);
             });
         });
+
+      // when the title is clicked
+      document.querySelector("h3").addEventListener("click", () => {
+        const createAnchor = document.createElement("a");
+        createAnchor.href = "/";
+        createAnchor.click();
+      });
+
+      // accessing discord servers
+      document.querySelector(".link").addEventListener("click", () => {
+        const createAnchor = document.createElement("a");
+        createAnchor.href = "/discord_servers.html";
+        createAnchor.click();
+      });
     </script>
   </body>
 </html>
