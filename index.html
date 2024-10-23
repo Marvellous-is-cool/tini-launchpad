@@ -30,7 +30,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.5em 0.5em;
+        padding: 5em 1em;
       }
 
       .header h3 {
@@ -181,6 +181,40 @@
         border: 1px solid #d6e9c6;
         border-radius: 5px;
       }
+
+      .countdown-timer {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #ff6600;
+        color: white;
+        font-size: 16px;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000;
+      }
+
+      .closed-site {
+        display: none;
+        text-align: center;
+        padding: 5em;
+        background-color: #282828;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        margin: 50px auto;
+        max-width: 700px;
+      }
+
+      .closed-site h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .closed-site p {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
     </style>
   </head>
   <body>
@@ -194,6 +228,8 @@
         <h5>Registration</h5>
       </div>
     </div>
+
+    <div class="countdown-timer" id="countdown-timer"></div>
 
     <div class="container">
       <div class="description">
@@ -400,6 +436,14 @@
       </div>
     </div>
 
+    <div class="closed-site" id="closed-site">
+      <h1>Site Closed</h1>
+      <p>
+        Sorry, registration is no longer available. Please check back for future
+        opportunities.
+      </p>
+    </div>
+
     <!-- Feedback Box -->
     <div class="feedback-box" id="feedback-box"></div>
 
@@ -471,6 +515,45 @@
         createAnchor.href = "tini-launchpad/discord_servers.html";
         createAnchor.click();
       });
+
+      const countdownElement = document.getElementById("countdown-timer");
+      const closedSite = document.getElementById("closed-site");
+      const container = document.querySelector(".container");
+
+      // Set the date we're counting down to
+      const countDownDate = new Date("Oct 24, 2024 10:00:00").getTime();
+
+      // Update the countdown every 1 second
+      const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element
+        countdownElement.innerHTML =
+          "Registration closes in " +
+          hours +
+          "h " +
+          minutes +
+          "m " +
+          seconds +
+          "s ";
+
+        // If the countdown is finished, show the closed page
+        if (distance < 0) {
+          clearInterval(x);
+          countdownElement.style.display = "none";
+          container.style.display = "none";
+          closedSite.style.display = "block";
+        }
+      }, 1000);
     </script>
   </body>
 </html>
