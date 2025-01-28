@@ -1,1 +1,1 @@
-# tini-launchpad
+# tini-training

@@ -7,7 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <title>Tini Technologies Launchpad Registration</title>
+    <title>Tini Technologies Training Registration</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -221,7 +221,7 @@
     <div class="header">
       <h3>
         Tini Technologies <br />
-        <span> Launchpad </span>
+        <span> Training </span>
       </h3>
       <div class="flex-row">
         <h5 class="link">Discord Servers</h5>
@@ -230,12 +230,10 @@
     </div>
 
     <div class="countdown-timer" id="countdown-timer"></div>
-
     <div class="container">
       <div class="description">
-        It is imperative that you register as only members who register are
-        considered participants and will be entitled to any offers at the end of
-        the training. <br />Click the link below to register.
+        Are you in Ikire, do you have a laptop and are you ready to learn tech or continue in your already learned path ? Then Join Tini Technologies and let's dive in. <br />
+        Don't forget to join the <a href="https://chat.whatsapp.com/LDc9ckfCt09DrQ7pJM6phy" target="_blank" style="color: #ff6600">Prep Group</a> before continuing below.
       </div>
 
       <button class="register-button" id="start-register">
@@ -430,9 +428,10 @@
       </div>
       <div class="success-message" id="success-message">
         All done! <br />
-        You are now a registered member! Go to the <b>General Chat Group</b> and
-        send the message <q><b>Registered!</b></q> to confirm your registration!
+        You are now a registered member!<b><a href="https://wa.me/2347056311266?text=Registered%20For%20Tini%20Technologies%20Training%20Program">Message me on whatsapp</a></b> with the message <q><b>Registered!</b></q> to confirm your registration and you shall be confirmed on the group!... 
         😊
+
+        <p>Still haven't joined the prep group, <a href="https://chat.whatsapp.com/LDc9ckfCt09DrQ7pJM6phy" target="_blank" style="color: #ff6600"> There you go!</a> </p>
       </div>
     </div>
 
@@ -521,7 +520,7 @@
       const container = document.querySelector(".container");
 
       // Set the date we're counting down to
-      const countDownDate = new Date("Oct 24, 2024 10:00:00").getTime();
+      const countDownDate = new Date("Feb 25, 2025 10:00:00").getTime();
 
       // Update the countdown every 1 second
       const x = setInterval(function () {
@@ -538,13 +537,7 @@
 
         // Display the result in the element
         countdownElement.innerHTML =
-          "Registration closes in " +
-          hours +
-          "h " +
-          minutes +
-          "m " +
-          seconds +
-          "s ";
+          `Registration closes in ${days} ${days > 1 ? 'days' : 'day'} ${hours}h ${minutes}m ${seconds}s`;
 
         // If the countdown is finished, show the closed page
         if (distance < 0) {
